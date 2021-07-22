@@ -18,17 +18,17 @@ public abstract class Phone {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "number", length = 40)
+    @Column(name = "number", nullable = false, length = 40)
     private String number;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "main")
+    @Column(name = "main", nullable = false)
     private Boolean main = Boolean.FALSE;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "type", nullable = false)
     private PhoneType type = PhoneType.MOBILE;
 
     @ManyToOne

@@ -17,7 +17,7 @@ public class Network {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
 
 }

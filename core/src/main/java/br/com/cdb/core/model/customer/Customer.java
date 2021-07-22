@@ -1,5 +1,6 @@
 package br.com.cdb.core.model.customer;
 
+import br.com.cdb.core.model.audit.DateAudit;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +9,13 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table(name = "customer")
+@Table(name = "customer", indexes =
+        {@Index(name = "idx_name", columnList = "name"),
+                @Index(name = "idx_birthday", columnList = "birthday")})
 @Entity
 @Getter
 @Setter
-public class Customer {
+public class Customer extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_generator")
@@ -20,14 +23,14 @@ public class Customer {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "type", nullable = false)
     private CustomerType type = CustomerType.DEFAULT;
 
-    @Column(name = "birthday")
+    @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
 
     @Column(name = "email")
