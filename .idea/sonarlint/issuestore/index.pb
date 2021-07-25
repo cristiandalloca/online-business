@@ -1,14 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-<
-core/HELP.md,2\8\2819bbeb645c7220848738578c0ae446166e96c9
-?
-core/.gitignore,8\f\8f16fff20c9abaf19044c2da043c6677c1119e28
-E
-.jpb/jpb-settings.xml,4\4\44d3869e4ab8f5a6660709b629065ab6e5795b01
-Z
-*core/.mvn/wrapper/maven-wrapper.properties,a\8\a857721c1c2d63f4e122aa1c11ba1837c1c7d944
 \
 ,.idea/libraries/Maven__antlr_antlr_2_7_7.xml,7\4\74a68c8173eaa4e121c7c4dd11baec456d5046b1
 o
@@ -157,9 +147,3 @@ i
 9.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_8_2.xml,d\d\dde4ecda57a0bbf3187f1929ddc7d9f37515b360
 b
 2.idea/libraries/Maven__org_yaml_snakeyaml_1_28.xml,c\f\cfcec4f886d01e59d2f1ece727cb4a6637c54469
-]
--core/.mvn/wrapper/MavenWrapperDownloader.java,5\3\5353c45248976bd964d08ca34ef69c4ebc2954e5
-9
-	core/mvnw,5\8\582789d2e36acd6257f00f4d7c8452bbb0ebbbe8
-=
-core/mvnw.cmd,2\6\26d8154aaf906c824b69b79f7835ac6da2d44a96

@@ -1,7 +1,10 @@
 package br.com.cdb.core.service;
 
+import br.com.cdb.core.exception.CustomerNotFoundException;
 import br.com.cdb.core.model.customer.Customer;
 import br.com.cdb.core.model.customer.CustomerDTO;
+import br.com.cdb.core.model.customer.CustomerPhone;
+import br.com.cdb.core.model.customer.CustomerPhoneDTO;
 import br.com.cdb.core.model.customer.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -31,11 +34,45 @@ public class CustomerService {
         return repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public CustomerDTO getById(Long id) {
+        return convertToDto(this.findById(id));
+    }
+
+    @Transactional
+    public CustomerDTO update(Long id, CustomerDTO dto) {
+        Customer customer = this.findById(id);
+        updateFromCustomerDTO(customer, dto);
+        return convertToDto(repository.save(customer));
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        repository.delete(this.findById(id));
+    }
+
+    private void updateFromCustomerDTO(Customer customer, CustomerDTO dto) {
+        customer.setName(dto.getName());
+        customer.setBirthday(dto.getBirthday());
+        customer.setEmail(dto.getEmail());
+        customer.setType(dto.getType());
+        customer.setPhones(dto.getPhones().stream().map(this::convertToEntity).collect(Collectors.toSet()));
+    }
+
+
+    private Customer findById(Long id) {
+        return repository.findById(id).orElseThrow(CustomerNotFoundException::new);
+    }
+
     private Customer convertToEntity(CustomerDTO dto) {
         return modelMapper.map(dto, Customer.class);
     }
 
     private CustomerDTO convertToDto(Customer customer) {
         return modelMapper.map(customer, CustomerDTO.class);
+    }
+
+    private CustomerPhone convertToEntity(CustomerPhoneDTO dto) {
+        return modelMapper.map(dto, CustomerPhone.class);
     }
 }

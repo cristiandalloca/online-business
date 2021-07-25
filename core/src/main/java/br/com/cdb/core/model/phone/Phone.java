@@ -1,16 +1,16 @@
 package br.com.cdb.core.model.phone;
 
-import br.com.cdb.core.model.phone.network.Network;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Phone {
+public abstract class Phone implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phone_generator")
@@ -30,9 +30,5 @@ public abstract class Phone {
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
     private PhoneType type = PhoneType.MOBILE;
-
-    @ManyToOne
-    @JoinColumn(name = "network_id")
-    private Network network = new Network();
 
 }

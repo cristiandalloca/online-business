@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,7 +37,7 @@ public class Customer extends DateAudit {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "customer", orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<CustomerPhone> phones = new HashSet<>();
 
 }

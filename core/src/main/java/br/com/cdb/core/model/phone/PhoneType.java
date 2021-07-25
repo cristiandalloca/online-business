@@ -1,6 +1,8 @@
 package br.com.cdb.core.model.phone;
 
 public enum PhoneType {
-    TELEPHONE,
+    RESIDENTIAL,
+    COMMERCIAL,
+    OTHER,
     MOBILE
 }

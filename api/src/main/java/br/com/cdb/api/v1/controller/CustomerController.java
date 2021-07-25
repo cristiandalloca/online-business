@@ -23,10 +23,26 @@ public class CustomerController {
         return ResponseEntity.ok(service.listAll());
     }
 
+    @GetMapping("/{customerId}")
+    public ResponseEntity<CustomerDTO> findById(@PathVariable Long customerId) {
+        return ResponseEntity.ok(service.getById(customerId));
+    }
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CustomerDTO dto) {
         service.create(dto);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{customerId}")
+    public ResponseEntity<CustomerDTO> update(@PathVariable Long customerId, @RequestBody CustomerDTO dto) {
+        return ResponseEntity.ok(service.update(customerId, dto));
+    }
+
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<Void> delete(@PathVariable Long customerId) {
+        service.delete(customerId);
+        return ResponseEntity.noContent().build();
     }
 
 }

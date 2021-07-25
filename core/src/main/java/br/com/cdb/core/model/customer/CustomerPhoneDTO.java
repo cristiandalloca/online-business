@@ -16,5 +16,4 @@ public class CustomerPhoneDTO {
 
     private PhoneType type;
 
-    private Long idNetwork;
 }
