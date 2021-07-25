@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +30,7 @@ public class Customer extends DateAudit {
     @Column(name = "type", nullable = false)
     private CustomerType type = CustomerType.DEFAULT;
 
-    @Column(name = "birthday", nullable = false)
+    @Column(name = "birthday")
     private LocalDate birthday;
 
     @Column(name = "email")

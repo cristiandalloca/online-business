@@ -7,6 +7,8 @@ import br.com.cdb.core.model.customer.CustomerPhone;
 import br.com.cdb.core.model.customer.CustomerPhoneDTO;
 import br.com.cdb.core.model.customer.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,13 +27,13 @@ public class CustomerService {
     }
 
     @Transactional
-    public void create(CustomerDTO dto) {
-        repository.save(convertToEntity(dto));
+    public Long create(CustomerDTO dto) {
+        return repository.save(convertToEntity(dto)).getId();
     }
 
     @Transactional(readOnly = true)
-    public List<CustomerDTO> listAll() {
-        return repository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
+    public Page<Customer> listAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Transactional(readOnly = true)

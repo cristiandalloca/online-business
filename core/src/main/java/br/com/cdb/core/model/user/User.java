@@ -1,0 +1,40 @@
+package br.com.cdb.core.model.user;
+
+import br.com.cdb.core.model.audit.DateAudit;
+import br.com.cdb.core.model.customer.CustomerPhone;
+import br.com.cdb.core.model.phone.Phone;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "\"user\"")
+@Getter
+@Setter
+public class User extends DateAudit {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
+    @SequenceGenerator(name = "user_generator", sequenceName = "user_sequence", allocationSize = 1)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "cpf", nullable = false)
+    private String cpf;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Set<UserPhone> phones = new HashSet<>();
+
+}
