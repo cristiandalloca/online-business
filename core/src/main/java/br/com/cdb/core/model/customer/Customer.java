@@ -1,6 +1,7 @@
 package br.com.cdb.core.model.customer;
 
 import br.com.cdb.core.model.audit.DateAudit;
+import br.com.cdb.core.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,7 +37,11 @@ public class Customer extends DateAudit {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     private Set<CustomerPhone> phones = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

@@ -1,8 +1,6 @@
 package br.com.cdb.core.model.user;
 
 import br.com.cdb.core.model.audit.DateAudit;
-import br.com.cdb.core.model.customer.CustomerPhone;
-import br.com.cdb.core.model.phone.Phone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "\"user\"", uniqueConstraints = {@UniqueConstraint(name = "uc_cpf", columnNames = "cpf"),
+        @UniqueConstraint(name = "uc_email", columnNames = "email")})
 @Getter
 @Setter
 public class User extends DateAudit {
