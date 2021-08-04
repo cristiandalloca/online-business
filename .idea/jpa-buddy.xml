@@ -4,7 +4,7 @@
     <option name="defaultUnitInitialized" value="true" />
     <option name="createEntityParentFqns">
       <list>
-        <option value="" />
+        <option value="br.com.cdb.core.model.image.Image" />
         <option value="br.com.cdb.core.model.phone.Phone" />
       </list>
     </option>

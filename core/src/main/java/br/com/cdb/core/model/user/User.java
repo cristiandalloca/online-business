@@ -1,6 +1,8 @@
 package br.com.cdb.core.model.user;
 
 import br.com.cdb.core.model.audit.DateAudit;
+import br.com.cdb.core.model.catalog.Catalog;
+import br.com.cdb.core.model.city.City;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,5 +37,15 @@ public class User extends DateAudit {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<UserPhone> phones = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    @ManyToMany
+    @JoinTable(name = "USER_CATALOG",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "catalog_id"))
+    private Set<Catalog> catalogs;
 
 }

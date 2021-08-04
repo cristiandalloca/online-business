@@ -1,6 +1,5 @@
 package br.com.cdb.core.model.state;
 
-import br.com.cdb.core.util.converter.UpperCaseConverter;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnTransformer;

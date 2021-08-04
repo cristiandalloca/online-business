@@ -36,16 +36,6 @@ class CustomerRepositoryTest {
         assertCustomerJoao(customers.get(0));
     }
 
-    @Test
-    void shouldUpdateAnExistingCustomer() {
-
-    }
-
-    @Test
-    void shouldDeleteAnExistingCustomer() {
-
-    }
-
     private void assertCustomerJoao(Customer customer) {
         assertNotNull(customer.getId());
         assertEquals("João da Silva", customer.getName());
