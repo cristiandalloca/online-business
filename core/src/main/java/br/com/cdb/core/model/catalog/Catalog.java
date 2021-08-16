@@ -1,9 +1,12 @@
 package br.com.cdb.core.model.catalog;
 
+import br.com.cdb.core.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Table(name = "catalog")
 @Entity
@@ -23,4 +26,6 @@ public class Catalog {
     @Column(name = "catalog_type")
     private CatalogType catalogType;
 
+    @ManyToMany(mappedBy = "catalogs")
+    private Set<User> users = new HashSet<>();
 }

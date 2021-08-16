@@ -37,11 +37,15 @@ public class Customer extends DateAudit {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", orphanRemoval = true)
     private Set<CustomerPhone> phones = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void addPhone(CustomerPhone phone) {
+        this.phones.add(phone);
+        phone.setCustomer(this);
+    }
 }

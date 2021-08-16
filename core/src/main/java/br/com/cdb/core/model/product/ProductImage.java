@@ -4,10 +4,7 @@ import br.com.cdb.core.model.image.Image;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "product_image")
 @Entity
@@ -15,7 +12,7 @@ import javax.persistence.Table;
 @Setter
 public class ProductImage extends Image {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product = new Product();
 }

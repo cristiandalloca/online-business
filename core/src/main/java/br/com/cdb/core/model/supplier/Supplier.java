@@ -23,7 +23,7 @@ public class Supplier {
     @Column(name = "hex_color", length = 7)
     private String hexColor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

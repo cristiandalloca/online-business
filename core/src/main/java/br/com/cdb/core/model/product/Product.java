@@ -3,7 +3,6 @@ package br.com.cdb.core.model.product;
 import br.com.cdb.core.model.audit.DateAudit;
 import br.com.cdb.core.model.catalog.Catalog;
 import br.com.cdb.core.model.supplier.Supplier;
-import br.com.cdb.core.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,20 +35,19 @@ public class Product extends DateAudit {
     @Column(name = "sale_value", precision = 19, scale = 2, nullable = false)
     private BigDecimal saleValue;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id", nullable = false)
     private Supplier supplier = new Supplier();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "catalog_id", nullable = false)
     private Catalog catalog = new Catalog();
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
     private Set<ProductImage> images = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
+    public void addImage(ProductImage image) {
+        this.images.add(image);
+        image.setProduct(this);
+    }
 }

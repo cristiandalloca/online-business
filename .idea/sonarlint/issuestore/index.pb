@@ -151,8 +151,6 @@ d
 4api/src/main/java/br/com/cdb/api/ApiApplication.java,d\8\d8ec027954088be11786470bfe804e8312abea81
 i
 9api/src/test/java/br/com/cdb/api/ApiApplicationTests.java,0\8\0839c333b6a2be5c9f0761951fa8775f28123d1d
-s
-Ccore/src/main/java/br/com/cdb/core/model/phone/network/Network.java,d\f\df34d2637bf7a1d6219bef78a2587ddd2f275cd3
 g
 7core/src/test/java/br/com/cdb/core/TestApplication.java,a\6\a6c775e8fe938060d2e4220c1350a8f0492276a8
 s
@@ -191,8 +189,6 @@ Kcore/src/main/java/br/com/cdb/core/exception/CustomerNotFoundException.java,7\
 core/pom.xml,7\6\76401d80919958a0380f14132adf8b8fc9c3d6ea
 =
 core/mvnw.cmd,2\6\26d8154aaf906c824b69b79f7835ac6da2d44a96
-s
-Ccore/src/main/java/br/com/cdb/core/model/customer/CustomerType.java,1\c\1c1db55dca9b6eb6114ff76132cc43121c1963a2
 ]
 -core/.mvn/wrapper/MavenWrapperDownloader.java,5\3\5353c45248976bd964d08ca34ef69c4ebc2954e5
 „
@@ -201,3 +197,13 @@ Z
 *core/.mvn/wrapper/maven-wrapper.properties,a\8\a857721c1c2d63f4e122aa1c11ba1837c1c7d944
 m
 =core/src/main/java/br/com/cdb/core/model/phone/PhoneType.java,b\b\bb89b208ad82c45b9197ed97039c20b1c0d65c72
+v
+Fcore/src/test/java/br/com/cdb/core/enviroment/CustomersEnviroment.java,7\3\7387699307effcbbc666a99c3618641e18bef241
+s
+Ccore/src/test/java/br/com/cdb/core/enviroment/PhonesEnviroment.java,1\9\192767a354ce21469142d1dfb95e0a3e98fccd9a
+€
+Pcore/src/test/java/br/com/cdb/core/model/city/repository/CityRepositoryTest.java,c\1\c1f95711548d739a577a869db4221294b3c75c1a
+ˆ
+Xcore/src/test/java/br/com/cdb/core/model/customer/repository/CustomerRepositoryTest.java,a\7\a78c9b6b060f0bcf731618bce8a09980d21a3aba
+E
+.jpb/jpb-settings.xml,4\4\44d3869e4ab8f5a6660709b629065ab6e5795b01

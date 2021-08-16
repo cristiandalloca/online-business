@@ -35,17 +35,31 @@ public class User extends DateAudit {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     private Set<UserPhone> phones = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "USER_CATALOG",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "catalog_id"))
-    private Set<Catalog> catalogs;
+    private Set<Catalog> catalogs = new HashSet<>();
 
+    public void addPhone(UserPhone phone) {
+        this.phones.add(phone);
+        phone.setUser(this);
+    }
+
+    public void addCatalog(Catalog catalog) {
+        this.catalogs.add(catalog);
+        catalog.getUsers().add(this);
+    }
+
+    public void removeCatalog(Catalog catalog) {
+        this.catalogs.remove(catalog);
+        catalog.getUsers().remove(this);
+    }
 }
