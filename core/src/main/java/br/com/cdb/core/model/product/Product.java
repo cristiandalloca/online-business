@@ -5,6 +5,7 @@ import br.com.cdb.core.model.catalog.Catalog;
 import br.com.cdb.core.model.supplier.Supplier;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -45,6 +46,10 @@ public class Product extends DateAudit {
 
     @OneToMany(mappedBy = "product", orphanRemoval = true)
     private Set<ProductImage> images = new HashSet<>();
+
+    @Formula("((SELECT SUM(me.amount) FROM MovementEntry me WHERE me.product.id = id)" +
+            " - (SELECT SUM(mo.amount) FROM MovementOutput mo WHERE mo.product.id = id))")
+    private Long quantityInStock;
 
     public void addImage(ProductImage image) {
         this.images.add(image);
