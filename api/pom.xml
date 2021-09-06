@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <core.version>1.0</core.version>
+        <springfox.version>3.0.0</springfox.version>
     </properties>
     <dependencies>
         <dependency>
@@ -27,6 +28,18 @@
             <groupId>br.com.cdb</groupId>
             <artifactId>core</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
         </dependency>
 
         <dependency>
