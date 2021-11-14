@@ -1,4 +1,4 @@
-package br.com.cdb.api.v1.controller;
+package br.com.cdb.api.v1.controller.customer;
 
 import br.com.cdb.core.model.customer.Customer;
 import br.com.cdb.core.model.customer.CustomerDTO;

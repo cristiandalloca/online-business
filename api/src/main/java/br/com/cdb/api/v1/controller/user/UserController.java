@@ -56,8 +56,6 @@ public class UserController {
         return ResponseEntity.created(uri).build();
     }
 
-
-
     private UserResponseDto converToDto(User user) {
         return modelMapper.map(user, UserResponseDto.class);
     }

@@ -60,7 +60,6 @@ public class CustomerService {
         customer.setPhones(dto.getPhones().stream().map(this::convertToEntity).collect(Collectors.toSet()));
     }
 
-
     private Customer findById(Long id) {
         return repository.findById(id).orElseThrow(CustomerNotFoundException::new);
     }
